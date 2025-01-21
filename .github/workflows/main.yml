@@ -36,6 +36,11 @@ jobs:
           gulp bundle --ship
           gulp package-solution --ship
 
+      # Install CLI for Microsoft 365
+      - run: npm install --global @pnp/cli-microsoft365
+        name: Install Office365 CLI
+      
+      # CLI for Microsoft 365 login action
       - name: M365 login
         run: m365 login --authType certificate --certificateBase64Encoded ${{ inputs.CERTIFICATE }}
     
