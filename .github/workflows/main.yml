@@ -1,0 +1,85 @@
+name: "SPFx CICD"
+on:
+  pull_request:
+    branches: 
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+
+  CI-SPFx:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # Node.js runtime 
+      - name: Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+
+      # Install npm
+      - name: Run npm ci
+        shell: bash
+        run: npm ci
+
+      # Build
+      - name: Build
+        shell: bash
+        run: gulp build
+
+      # Test
+      - name: Test
+        shell: bash
+        run: npm test
+
+      # Bundle and Package
+      - name: Bundle and package
+        shell: bash
+        run: |
+          gulp bundle --ship
+          gulp package-solution --ship
+
+      # Publish artifact
+      - name: Publish Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: infotechtion-api-consumer
+          path: "**/*.sppkg"
+          if-no-files-found: error
+
+  CD-SPFx:
+    runs-on: ubuntu-latest
+    environment: Prod
+    if: github.event_name == 'push'
+
+    steps:
+
+      # Download artifact
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: infotechtion-api-consumer
+
+      # Install PnP CLI M365
+      - name: Install PnP CLI M365
+        shell: bash
+        run: sudo npm install --global @pnp/cli-microsoft365
+
+      # Login M365 CLI
+      - name: Login to M365 CLI
+        shell: bash
+        run:  m365 login --authType browser
+
+      # Upload SPFx package to Site Collection App Catalog
+      - name: Upload SPFx to Collection
+        shell: bash
+        run: m365 spo app add --filePath ./infotechtion-api-consumer --appCatalogUrl ${{ inputs.sharepoint_app_catalogue_url }} --scope ${{ inputs.sharepoint_app_catalogue_scope }} --overwrite
+
+      # Deploy SPFx package
+      - name: Deploy SPFx package
+        shell: bash
+        run: m365 spo app deploy --name ${{ inputs.sharepoint_app_name }} --appCatalogUrl ${{ inputs.sharepoint_app_catalogue_url }} --scope ${{ inputs.sharepoint_app_catalogue_scope }}
