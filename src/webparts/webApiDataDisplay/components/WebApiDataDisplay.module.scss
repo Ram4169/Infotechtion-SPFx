@@ -1,0 +1,27 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.wpcontainer {
+  display: block;
+
+  &__formContainer{
+    background-color: aliceblue;
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px;
+
+    &__form{
+      display: flex;
+      column-gap: 25px;
+    }
+
+    &__formaction{
+      column-gap: 10px;
+      display: flex;
+      padding-top: 20px;
+    }
+  }
+
+  &__gridContainer{
+    align-items: center;
+  }
+}

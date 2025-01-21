@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.19.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.18.2",
+    "libraryName": "infotechtion-api-consumer",
+    "libraryId": "fe8457bd-2c59-488b-96ac-a856107f917b",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "infotechtion-api-consumer",
+    "solutionShortDescription": "infotechtion-api-consumer description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

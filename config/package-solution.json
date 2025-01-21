@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "infotechtion-api-consumer-client-side-solution",
+    "id": "fe8457bd-2c59-488b-96ac-a856107f917b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "infotechtion-api-consumer description"
+      },
+      "longDescription": {
+        "default": "infotechtion-api-consumer description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "infotechtion-api-consumer Feature",
+        "description": "The feature that activates elements of the infotechtion-api-consumer solution.",
+        "id": "e1636f54-f121-487a-907c-f9df1f829562",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/infotechtion-api-consumer.sppkg"
+  }
+}
