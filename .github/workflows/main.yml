@@ -36,18 +36,13 @@ jobs:
           gulp bundle --ship
           gulp package-solution --ship
 
-    # Login M365 CLI
-      - name: Login to M365 CLI
-        shell: bash
-        run:  m365 login --authType browser
-
-      # Upload SPFx package to Site Collection App Catalog
-      - name: Upload SPFx to Collection
-        shell: bash
-        run: m365 spo app add --filePath ./FILENAME --appCatalogUrl ${{ inputs.sharepoint_app_catalogue_url }} --scope ${{ inputs.sharepoint_app_catalogue_scope }} --overwrite
-
-      # Deploy SPFx package
-      - name: Deploy SPFx package
-        shell: bash
-        run: m365 spo app deploy --name ${{ inputs.sharepoint_app_name }} --appCatalogUrl ${{ inputs.sharepoint_app_catalogue_url }} --scope ${{ inputs.sharepoint_app_catalogue_scope }}
+      - name: M365 login
+        run: m365 login --authType certificate --certificateBase64Encoded ${{ inputs.CERTIFICATE }}
+    
+      - name: SharePoint deploy
+        id: deploy
+        uses: pnp/action-cli-deploy@v3.0.1
+        with:
+          APP_FILE_PATH: ./package/infotechtion-api-consumer.sppkg
+          OVERWRITE: true
 
