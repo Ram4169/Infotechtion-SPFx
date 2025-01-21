@@ -16,10 +16,10 @@ jobs:
     steps:
 
       # Node.js runtime 
-      - name: Node.js 10.x
+      - name: Node.js 18.x
         uses: actions/setup-node@v1
         with:
-          node-version: 10.x
+          node-version: 18.x
 
       # Install npm
       - name: Run npm ci
