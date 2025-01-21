@@ -42,7 +42,7 @@ jobs:
       
       # CLI for Microsoft 365 login action
       - name: M365 login
-        run: m365 login --appId [e19874a2-e9fe-4073-9d4c-b7c3b1110839] --tenant [968b7c87-12f6-4545-bb50-6bcca8263a8a] --authType secret --secret [174fdf26-0d38-4231-9f13-eebd594ca127]
+        run: m365 login --authType browser
     
       - name: SharePoint deploy
         id: deploy
