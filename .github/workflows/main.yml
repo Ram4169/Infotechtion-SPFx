@@ -42,9 +42,9 @@ jobs:
       # CLI for Microsoft 365 login action
       - name: M365 login
         env:
-          SUPER_SECRET: ${{ secrets.SuperSecret }}
+          SUPER_SECRET: ${{ secrets.SUPERSECRET }}
         run: m365 login --appId ${{ secrets.APP_ID }} --tenant ${{ secrets.TENANT_ID }} --authType secret --secret $SUPER_SECRET
-        shell: cmd
+        
       - name: SharePoint deploy
         id: deploy
         uses: pnp/action-cli-deploy@v3.0.1
