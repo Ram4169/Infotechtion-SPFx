@@ -43,7 +43,7 @@ jobs:
       - name: M365 login
         env:
           SUPER_SECRET: ${{ secrets.SuperSecret }}
-        run: m365 login --appId ${{ secrets.APP_ID }} --tenant ${{ secrets.TENANT_ID }} --authType secret --secret "$SUPER_SECRET"
+        run: m365 login --appId ${{ secrets.APP_ID }} --tenant ${{ secrets.TENANT_ID }} --authType secret --secret $SUPER_SECRET
     
       - name: SharePoint deploy
         id: deploy
