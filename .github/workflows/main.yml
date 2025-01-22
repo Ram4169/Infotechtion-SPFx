@@ -41,7 +41,7 @@ jobs:
       
       # CLI for Microsoft 365 login action
       - name: M365 login
-        run: m365 login --appId ${{ secrets.APP_ID }} -s ${{ secrets.APP_SECRET_ID }} --tenant ${{ secrets.TENANT_ID }} --t secret
+        run: m365 login --appId ${{ secrets.APP_ID }} --tenant ${{ secrets.TENANT_ID }} --authType secret --secret ${{ secrets.APP_SECRET_ID }}
     
       - name: SharePoint deploy
         id: deploy
