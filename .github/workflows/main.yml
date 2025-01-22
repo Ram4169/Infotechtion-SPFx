@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - shell: bash
       - name: Checkout
         uses: actions/checkout@v3.5.3
         
@@ -41,7 +42,6 @@ jobs:
       
       # CLI for Microsoft 365 login action
       - name: M365 login
-      - shell: bash
         run: m365 login --appId ${{ secrets.APP_ID }} --tenant ${{ secrets.TENANT_ID }} --authType secret --secret ${{ secrets.APP_SECRET_ID }}
     
       - name: SharePoint deploy
