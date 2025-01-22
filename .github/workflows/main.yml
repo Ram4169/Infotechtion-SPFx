@@ -11,7 +11,7 @@ on:
 jobs:
 
   CI-SPFx:
-    runs-on: ubuntu-latest
+    runs-on: window-latest
 
     steps:
       - name: Checkout
