@@ -53,21 +53,21 @@ jobs:
 
       # upload build package
       - name: Upload Build Package
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: buildPackage
           path: sharepoint/solution/${{env.SPPKG_FILE_NAME}}
 
       # upload deployment script
       - name: Upload deployment script
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: deploymentScript
           path: ${{env.DEPLOYMENT_SCRIPT}}
 
       # upload jest code coverage report
       - name: Upload jest output
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: jestOutput
           path: jest/*
@@ -79,14 +79,14 @@ jobs:
 
     steps:
       - name: Download package (sppkg file)
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         id: packageDownloadStep
         with:
           name: buildPackage
           path: buildPackage
 
       - name: Download deployment script (ps1 file)
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: deploymentScript
           path: deploymentScript
