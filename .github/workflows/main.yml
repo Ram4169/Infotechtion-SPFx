@@ -11,7 +11,7 @@ on:
 jobs:
 
   CI-SPFx:
-    runs-on: window-latest
+    runs-on: ubantu-latest
 
     steps:
       - name: Checkout
@@ -44,7 +44,7 @@ jobs:
         env:
           SUPER_SECRET: ${{ secrets.SuperSecret }}
         run: m365 login --appId ${{ secrets.APP_ID }} --tenant ${{ secrets.TENANT_ID }} --authType secret --secret $SUPER_SECRET
-    
+        shell: cmd
       - name: SharePoint deploy
         id: deploy
         uses: pnp/action-cli-deploy@v3.0.1
