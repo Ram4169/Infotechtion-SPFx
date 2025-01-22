@@ -57,7 +57,7 @@ try{
         $encpassword = convertto-securestring -String $password -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $encpassword
         Write-Output "Connecting to site...."       
-        Connect-PnPOnline -Url $SiteUrl  -Credentials $cred -ErrorAction Stop
+        Connect-PnPOnline -Url $SiteUrl  -ClientId b0c68d67-cf11-4411-b98b-3dac2865de78 -ClientSecret b~t8Q~Ukr1Ikl-HiwmcuAWHbyKJwe1A2qfS9Yce1 -ErrorAction Stop
         Write-Output "Connection created, installing app on site...."		
         AddInstall-ApptoSite -siteUrl $SiteUrl -packageFilePath $packageFilePath -appName $appName           
         Disconnect-PnPOnline   
