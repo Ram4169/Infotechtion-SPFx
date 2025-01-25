@@ -10,8 +10,8 @@ env:
   DEPLOYMENT_SCRIPT: 'DeployAppToSite.ps1'
   SITE_URL: 'https://sharma29470.sharepoint.com/sites/HumanResource'
   APP_NAME: 'infotechtion-api-consumer'
-  ADMIN_USERNAME: ${{vars.ADMIN_USERNAME}}
-  PASSWORD: ${{secrets.ADMIN_USERNAME}}
+  ADMIN_USERNAME: ${{ vars.ADMIN_USERNAME }}
+  PASSWORD: ${{ secrets.ADMIN_USERNAME }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
