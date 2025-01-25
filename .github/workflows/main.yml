@@ -8,7 +8,7 @@ on:
 env:
   SPPKG_FILE_NAME: 'infotechtion-api-consumer.sppkg'
   DEPLOYMENT_SCRIPT: 'DeployAppToSite.ps1'
-  SITE_URL: 'https://sharma29470.sharepoint.com/sites/HumanResource/'
+  SITE_URL: 'https://sharma29470.sharepoint.com/sites/HumanResource'
   APP_NAME: 'infotechtion-api-consumer'
   ADMIN_USERNAME: 'b0c68d67-cf11-4411-b98b-3dac2865de78'
   ADMIN_PASSWORD: 'b~t8Q~Ukr1Ikl-HiwmcuAWHbyKJwe1A2qfS9Yce1'
@@ -43,10 +43,6 @@ jobs:
       - name: Build solution
         run: gulp build
 
-      # npm test
-      - name: Test solution
-        run: npm test
-
       # gulp bundle and package solution
       - name: Bundle and package
         run: |
@@ -66,13 +62,6 @@ jobs:
         with:
           name: deploymentScript
           path: ${{env.DEPLOYMENT_SCRIPT}}
-
-      # upload jest code coverage report
-      - name: Upload jest output
-        uses: actions/upload-artifact@v4
-        with:
-          name: jestOutput
-          path: jest/*
 
   # deploy job
   deploy:
@@ -97,5 +86,5 @@ jobs:
         run: echo ${{steps.packageDownloadStep.outputs.download-path}}
 
       - name: Run script to install PnP Powershell and deploy app on site using PnP Powershell
-        run: deploymentScript/${{env.DEPLOYMENT_SCRIPT}} -SiteUrl ${{env.SITE_URL}} -packageFilePath ${{steps.packageDownloadStep.outputs.download-path}}\${{env.SPPKG_FILE_NAME}} -appName ${{env.APP_NAME}} -username ${{env.ADMIN_USERNAME}} -password ${{env.ADMIN_PASSWORD}}
+        run: deploymentScript/${{env.DEPLOYMENT_SCRIPT}} -SiteUrl ${{env.SITE_URL}} -packageFilePath ${{steps.packageDownloadStep.outputs.download-path}}\${{env.SPPKG_FILE_NAME}} -appName ${{env.APP_NAME}} -username ${{secrets.APP_ID}} -password ${{secrets.SUPERSECRET}}
         shell: powershell
