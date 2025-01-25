@@ -18,8 +18,8 @@ jobs:
   # This workflow contains 2 jobs called "build and deploy"
   build:
     runs-on: ubuntu-latest
-
+    environment: ${{ github.event.inputs.environment }}
     steps:
       # Checkout code
       - name: Checkout code
-        run: echo ${{env.ADMIN_USERNAME}}
+        run: echo ${{ secrets.ADMIN_USERNAME }}
