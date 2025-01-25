@@ -12,3 +12,14 @@ env:
   APP_NAME: 'infotechtion-api-consumer'
   ADMIN_USERNAME: ${{vars.ADMIN_USERNAME}}
   PASSWORD: ${{secrets.ADMIN_USERNAME}}
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains 2 jobs called "build and deploy"
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout code
+      - name: Checkout code
+        run: echo ${{env.ADMIN_USERNAME}}
