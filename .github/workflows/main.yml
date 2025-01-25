@@ -16,7 +16,6 @@ jobs:
   # This workflow contains 2 jobs called "build and deploy"
   build:
     runs-on: ubuntu-latest
-    environment: Prod
 
     steps:
       # Checkout code
@@ -65,6 +64,7 @@ jobs:
   # deploy job
   deploy:
     runs-on: windows-latest
+    environment: Prod
     needs: [build]
 
     steps:
@@ -85,5 +85,5 @@ jobs:
         run: echo ${{steps.packageDownloadStep.outputs.download-path}}
 
       - name: Run script to install PnP Powershell and deploy app on site using PnP Powershell
-        run: deploymentScript/${{env.DEPLOYMENT_SCRIPT}} -SiteUrl ${{env.SITE_URL}} -packageFilePath ${{steps.packageDownloadStep.outputs.download-path}}\${{env.SPPKG_FILE_NAME}} -appName ${{env.APP_NAME}} -username "ram7033@sharma29470.onmicrosoft.com" -password ${{secrets.ADMIN_PASSWORD}}
+        run: deploymentScript/${{env.DEPLOYMENT_SCRIPT}} -SiteUrl ${{env.SITE_URL}} -packageFilePath ${{steps.packageDownloadStep.outputs.download-path}}\${{env.SPPKG_FILE_NAME}} -appName ${{env.APP_NAME}} -username ${{vars.ADMIN_USERNAME}} -password ${{secrets.ADMIN_PASSWORD}}
         shell: powershell
