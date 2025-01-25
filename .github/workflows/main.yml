@@ -22,4 +22,5 @@ jobs:
     steps:
       # Checkout code
       - name: Checkout code
-        run: echo ${{ secrets.ADMIN_USERNAME }}
+        run: |
+          echo ${{ secrets.ADMIN_USERNAME }}
