@@ -10,8 +10,6 @@ env:
   DEPLOYMENT_SCRIPT: 'DeployAppToSite.ps1'
   SITE_URL: 'https://sharma29470.sharepoint.com/sites/HumanResource'
   APP_NAME: 'infotechtion-api-consumer'
-  ADMIN_USERNAME: 'b0c68d67-cf11-4411-b98b-3dac2865de78'
-  ADMIN_PASSWORD: 'b~t8Q~Ukr1Ikl-HiwmcuAWHbyKJwe1A2qfS9Yce1'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -86,5 +84,5 @@ jobs:
         run: echo ${{steps.packageDownloadStep.outputs.download-path}}
 
       - name: Run script to install PnP Powershell and deploy app on site using PnP Powershell
-        run: deploymentScript/${{env.DEPLOYMENT_SCRIPT}} -SiteUrl ${{env.SITE_URL}} -packageFilePath ${{steps.packageDownloadStep.outputs.download-path}}\${{env.SPPKG_FILE_NAME}} -appName ${{env.APP_NAME}} -username ${{vars.ADMIN_USERNAME}} -password ${{secrets.ADMIN_PASSWORD}}
+        run: deploymentScript/${{env.DEPLOYMENT_SCRIPT}} -SiteUrl ${{env.SITE_URL}} -packageFilePath ${{steps.packageDownloadStep.outputs.download-path}}\${{env.SPPKG_FILE_NAME}} -appName ${{env.APP_NAME}} -username "ram7033@sharma29470.onmicrosoft.com" -password ${{secrets.ADMIN_PASSWORD}}
         shell: powershell
